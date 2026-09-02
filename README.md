@@ -59,4 +59,3 @@ The first time you execute the script, it must download the EasyOCR language mod
 
 - Tested on Python 3.13.9
 - Tested on SCIPP lab images with ~90% accuracy across 124 images.
-- Access codes are not included in this repository — store them in a local `.env` file as described above.
