@@ -24,7 +24,6 @@ Create a file called `.env` in the same directory as the script with the followi
 ITKDB_ACCESS_CODE1=your_access_code_1
 ITKDB_ACCESS_CODE2=your_access_code_2
 ```
-Contact your lab administrator for credentials. Do not share this file or commit it to GitHub.
 
 **Set the folder(s) containing your images:**
 ```python
