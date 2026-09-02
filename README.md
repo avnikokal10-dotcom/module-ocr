@@ -16,7 +16,7 @@ For each image the script:
 Install the required packages:
 
 ```
-pip install easyocr pillow numpy itkdb
+pip install easyocr pillow numpy itkdb python-dotenv
 ```
 
 Then open the script and fill in two things at the top:
