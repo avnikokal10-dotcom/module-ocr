@@ -46,7 +46,7 @@ python module_ocr.py
 ## Troubleshooting
 
 **API connection error / access code error**
-If the script fails with a 500 HTTP error or "Identity not Authenticated", your access codes are either missing, incorrect, or expired. Make sure your `.env` file exists in the same directory as the script and contains the correct credentials. Contact your lab administrator if you need new credentials.
+If the script fails with a 500 HTTP error or "Identity not Authenticated", your access codes are either missing, incorrect, or expired. Make sure your `.env` file exists in the same directory as the script and contains the correct credentials.
 
 **"found 0 images"**
 Check that the paths in `imageFolders` are correct and that the images are `.jpg` or `.JPG` files. Use the full absolute path e.g. `/Users/yourname/Downloads/images`.
