@@ -56,14 +56,10 @@ If the script fails with a 500 HTTP error or "Secret must be not null", your acc
 **"found 0 images"**
 Check that the paths in `imageFolders` are correct and that the images are `.jpg` or `.JPG` files.
 
-**Low accuracy / many unread images**
-The script works best with high resolution photos taken straight-on. Images that are blurry, heavily shadowed, or where the module is positioned off-center may not read correctly.
-
 **First run is slow**
 The first time you execute the script, it must download the EasyOCR language model (~100MB). This is normal and only happens once. Subsequent runs will be much faster.
 
 ## Notes
 
 - Tested on Python 3.13, compatible with Python 3.8 and later.
-- Tested on SCIPP lab images with ~90% accuracy across 124 images.
 - Access codes are not included in this repository.
