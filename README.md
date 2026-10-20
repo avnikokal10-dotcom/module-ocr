@@ -40,17 +40,15 @@ Then run:
 python module_ocr.py
 ```
 
-There is also a notebook version (`module_ocr.ipynb`) that does the same thing, if you'd rather run it cell by cell.
+There is also a notebook version (`module_ocr_notebook.ipynb`) that does the same thing, but displays the images for all warning/failed modules for easier confirmation.
 
 ## Output
 
 Every image ends up in one of three groups:
 
 - **Passed**: serial on board matches the database
-- **Warning**: serial is almost the same as the database (one character off, usually an OCR slip). Worth a quick look by hand
+- **Warning**: serial is almost the same as the database (one character off, usually an OCR mistake).
 - **Failed**: anything that couldn't be confirmed. This includes serials that don't match (potential assembly error worth investigating), images where the serial or module name couldn't be read (usually a blurry image or text out of frame), and a label that doesn't match the file name
-
-If the serial on a board belongs to a different module, the failed entry says so, and these are listed first.
 
 ## Troubleshooting
 
@@ -70,4 +68,3 @@ The first time you execute the script, it must download the EasyOCR language mod
 
 - Tested on Python 3.13, compatible with Python 3.8 and later.
 - Tested on SCIPP lab images with ~90% accuracy across 124 images.
-- Access codes are not included in this repository — store them in a local `.env` file as described above.
