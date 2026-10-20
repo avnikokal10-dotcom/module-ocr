@@ -48,7 +48,8 @@ Every image ends up in one of three groups:
 
 - **Passed**: serial on board matches the database
 - **Warning**: serial is almost the same as the database (one character off, usually an OCR mistake).
-- **Failed**: anything that couldn't be confirmed. This includes serials that don't match (potential assembly error worth investigating), images where the serial or module name couldn't be read (usually a blurry image or text out of frame), and a label that doesn't match the file name
+- **Unread**: images where the serial or module name couldn't be read (usually a blurry image or text out of frame)
+- **Failed**: anything that couldn't be confirmed. This includes serials that don't match (potential assembly error worth investigating)
 
 ## Troubleshooting
 
