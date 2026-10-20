@@ -67,4 +67,4 @@ The first time you execute the script, it must download the EasyOCR language mod
 ## Notes
 
 - Tested on Python 3.13, compatible with Python 3.8 and later.
-- Tested on SCIPP lab images with ~90% accuracy across 124 images.
+- Tested on SCIPP lab images with ~89% accuracy across 491 images.
