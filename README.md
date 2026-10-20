@@ -24,6 +24,7 @@ Create a file called `.env` in the same directory as the script with the followi
 ITKDB_ACCESS_CODE1=your_access_code_1
 ITKDB_ACCESS_CODE2=your_access_code_2
 ```
+Contact your lab administrator for credentials. Do not share this file or commit it to GitHub.
 
 **Set the folder(s) containing your images:**
 ```python
@@ -46,7 +47,7 @@ python module_ocr.py
 ## Troubleshooting
 
 **API connection error / access code error**
-If the script fails with a 500 HTTP error or "Identity not Authenticated", your access codes are either missing, incorrect, or expired. Make sure your `.env` file exists in the same directory as the script and contains the correct credentials.
+If the script fails with a 500 HTTP error or "Identity not Authenticated", your access codes are either missing, incorrect, or expired. Make sure your `.env` file exists in the same directory as the script and contains the correct credentials. Contact your lab administrator if you need new credentials.
 
 **"found 0 images"**
 Check that the paths in `imageFolders` are correct and that the images are `.jpg` or `.JPG` files. Use the full absolute path e.g. `/Users/yourname/Downloads/images`.
@@ -56,5 +57,6 @@ The first time you execute the script, it must download the EasyOCR language mod
 
 ## Notes
 
-- Tested on Python 3.13.9
+- Tested on Python 3.13, compatible with Python 3.8 and later.
 - Tested on SCIPP lab images with ~90% accuracy across 124 images.
+- Access codes are not included in this repository — store them in a local `.env` file as described above.
