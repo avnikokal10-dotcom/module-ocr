@@ -10,6 +10,8 @@ For each image the script:
 3. Looks up the expected hybrid for that module in the ITk database
 4. Reports any mismatches or images it couldn't read
 
+The module name read from the label is what decides which module an image belongs to. If it disagrees with the file name, the image is marked as failed.
+
 ## Getting started
 
 Install the required packages:
@@ -38,11 +40,17 @@ Then run:
 python module_ocr.py
 ```
 
+There is also a notebook version (`module_ocr.ipynb`) that does the same thing, if you'd rather run it cell by cell.
+
 ## Output
 
+Every image ends up in one of three groups:
+
 - **Passed**: serial on board matches the database
-- **Failed**: serial was read but doesn't match (potential assembly error worth investigating)
-- **Unread**: couldn't extract the serial from the image (usually means the image is blurry or the text is out of frame)
+- **Warning**: serial is almost the same as the database (one character off, usually an OCR slip). Worth a quick look by hand
+- **Failed**: anything that couldn't be confirmed. This includes serials that don't match (potential assembly error worth investigating), images where the serial or module name couldn't be read (usually a blurry image or text out of frame), and a label that doesn't match the file name
+
+If the serial on a board belongs to a different module, the failed entry says so, and these are listed first.
 
 ## Troubleshooting
 
@@ -51,6 +59,9 @@ If the script fails with a 500 HTTP error or "Identity not Authenticated", your 
 
 **"found 0 images"**
 Check that the paths in `imageFolders` are correct and that the images are `.jpg` or `.JPG` files. Use the full absolute path e.g. `/Users/yourname/Downloads/images`.
+
+**Lots of failed with "error: ... Connection" or "Failed to resolve"**
+Your internet dropped during the run, so the database was never checked for those images. Rerun once you're back online.
 
 **First run is slow**
 The first time you execute the script, it must download the EasyOCR language model (~100MB). This is normal and only happens once. Subsequent runs will be much faster.
