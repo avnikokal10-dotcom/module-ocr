@@ -86,7 +86,6 @@ def other_type(name):
 
 
 def get_module_hybrid(module_name):
-     the label prefix gets lost and a leading 0 gets read as 8, so try those too
     names = [module_name, other_type(module_name)]
     if module_name[-4] == '8':
         names += [n[:-4] + '0' + n[-3:] for n in names]
