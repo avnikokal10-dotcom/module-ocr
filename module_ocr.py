@@ -86,7 +86,7 @@ def other_type(name):
 
 
 def get_module_hybrid(module_name):
-    # the label prefix gets lost and a leading 0 gets read as 8, so try those too
+     the label prefix gets lost and a leading 0 gets read as 8, so try those too
     names = [module_name, other_type(module_name)]
     if module_name[-4] == '8':
         names += [n[:-4] + '0' + n[-3:] for n in names]
@@ -120,7 +120,6 @@ def edit_distance(a, b):
 def compare(candidate, db_hybrids):
     if candidate in db_hybrids:
         return 'ok'
-    # h digit has to match exactly because it is what picks the hybrid
     for h in db_hybrids:
         if h and candidate[-1] == h[-1] and edit_distance(fold(candidate), fold(h)) <= 1:
             return 'warning'
@@ -131,7 +130,6 @@ def open_image(filepath):
     with Image.open(filepath) as img:
         img.load()
         img = ImageOps.exif_transpose(img)
-        # photos come in sideways sometimes, labels read upright after this
         if img.width > img.height:
             img = img.rotate(90, expand=True)
         return img
@@ -147,7 +145,6 @@ def remove_black_border(img, threshold=30):
 
 
 def fix_module_name(result, min_confidence=0.1):
-    # low cutoff because the prefix part of the label reads with poor confidence
     kept_text = ' '.join([text for (_, text, conf) in result if conf >= min_confidence])
     match = re.search(r'(PRO|PS)[-_ ]*[LI]S[-_ ]*([0-9OILSBZG(|]{3,4})', kept_text, re.IGNORECASE)
     if match:
@@ -168,7 +165,6 @@ def crop_label(img):
 
 
 def crop_label_bottom(img):
-    # some boards are photographed upside down, so the label is at the bottom and flipped
     w, h = img.size
     crop = img.crop((int(w*0.15), int(h*0.92), int(w*0.80), h))
     return ImageOps.autocontrast(crop.rotate(180), cutoff=1)
@@ -211,13 +207,11 @@ def get_serial_from_result(result, sw):
                     prefix = p
                     gpc_block = m.group(0)
                     gpc_xc = xc
-                    # easyocr sometimes returns prefix, block 1 and block 2 as one chunk
                     rest = re.sub(r'[^A-Z0-9]', '', text_up[m.end():])
                     if len(rest) >= 4:
                         cleaned = ''.join([BLOCK2_CONFUSIONS.get(c, c) for c in rest[:4]])
                         if is_valid_block2(cleaned, gpc_block):
                             four_digit = cleaned
-                            # use the right edge so the letter window starts after the chunk
                             block2_xc = max(pt[0] for pt in box) / sw
 
     for (box, text, conf) in detections:
@@ -268,7 +262,6 @@ def get_serial_from_result(result, sw):
                         letter = l
                         letter_xc = xc
                         h_digit = mapped_second
-            # a lone 8 9 or 4 here is almost always a letter the ocr turned into a digit
             if letter is None and '8' in clean_alnum and len(clean_alnum) <= 2:
                 letter = 'B'
                 letter_xc = xc
@@ -296,7 +289,6 @@ def get_serial_from_result(result, sw):
 
 
 def read_serial(reader, img, db_hybrids):
-    # wide crop and upscaling are retries for when the first read misses
     best = (3, 'unread', None)
     for box in (SERIAL_BOX, SERIAL_BOX_WIDE):
         crop = find_gpc_crop(img, box)
