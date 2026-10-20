@@ -62,14 +62,11 @@ Check that the paths in `image_folders` are correct and that the images are `.jp
 **Unread with "error: ... Connection" or "Failed to resolve"**
 Your internet or the database connection dropped, so those images were never checked. Rerun once you're back online.
 
-**Whole batch unread**
-The serial is probably outside the crop. Adjust `SERIAL_BOX` and `SERIAL_BOX_WIDE` at the top of the script.
-
 **First run is slow**
 The first time you execute the script, it must download the EasyOCR language model (~100MB). This is normal and only happens once. Subsequent runs will be much faster.
 
 ## Notes
 
 - Tested on Python 3.13.9. The pinned package versions need Python 3.11 or newer.
-- On 491 SCIPP lab images, about 85% passed and about 8% more were warnings.
+- On 491 SCIPP lab images, about 86% passed and about 8% more were warnings.
 - If a new batch uses a serial prefix other than `GPC`, `DBS` or `DSG`, add it to `VALID_PREFIXES`.
